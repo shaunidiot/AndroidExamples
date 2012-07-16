@@ -1,4 +1,4 @@
-package com.shaundiot.proximitysensor;
+package com.androidexamples.accelerometer;
 
 import android.app.Activity;
 import android.hardware.Sensor;
