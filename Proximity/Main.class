@@ -1,0 +1,39 @@
+package com.androidexamples.proximitysensor;
+
+
+import android.app.Activity;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.os.Bundle;
+import android.widget.TextView;
+
+public class ProximitySensorActivity extends Activity implements
+		SensorEventListener {
+	/** Called when the activity is first created. */
+	SensorManager psm;
+	Sensor proxSensor;
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.main);
+		psm = (SensorManager) getSystemService(SENSOR_SERVICE);
+		proxSensor = psm.getDefaultSensor(Sensor.TYPE_PROXIMITY);
+		psm.registerListener(this, proxSensor,
+				SensorManager.SENSOR_DELAY_NORMAL);
+	}
+
+	public void onAccuracyChanged(Sensor arg0, int arg1) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void onSensorChanged(SensorEvent arg0) {
+		// TODO Auto-generated method stub
+		String currentProx = String.valueOf(arg0.values[0]);
+		// 0.0 if object is near phone
+		//1.0 if away from phone
+	}
+}
